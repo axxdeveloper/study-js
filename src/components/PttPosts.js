@@ -18,7 +18,7 @@ class PttPosts extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    console.log("mapStateToProps", state)
     return state;
 }
 

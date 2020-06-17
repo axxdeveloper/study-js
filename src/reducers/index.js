@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 export const pttPostsReducer = () => {
+    console.log("pttPostsReducer")
     return [
         {title:'Article AAAA', author:"author AAA"},
         {title:'Article BBBB', author:"author BBB"},
@@ -10,6 +11,7 @@ export const pttPostsReducer = () => {
 };
 
 export const selectedPttPostReducer = (selectedPttPost = null, action) => {
+    console.log("selectedPttPostReducer", selectedPttPost, action)
      if (action.type === 'PTT_POST_SELECTED') {
         return action.payload;
      }
