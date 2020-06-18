@@ -11,7 +11,6 @@ class PttPosts extends Component {
         });
     }
 
-
     render() {
         return <div>{this.renderPosts()}</div>
     }
@@ -19,7 +18,7 @@ class PttPosts extends Component {
 
 const mapStateToProps = (state) => {
     console.log("mapStateToProps", state)
-    return state;
+    return {pttPosts: state.pttPosts};
 }
 
 export default connect(mapStateToProps, { selectPttPost })(PttPosts)

@@ -1,20 +1,18 @@
-import React, {Component} from "react";
+import React from "react";
 import {connect} from 'react-redux'
 
-const PttPostContent = ({pttPost}) => {
-    if (!pttPost) {
+const PttPostContent = ({selectedPost}) => {
+    if (!selectedPost) {
         return <div />
     }
-
     return <div>
-        <div>${pttPost.title}</div>
-        <div>${pttPost.author}</div>
+        <div>${selectedPost.title}</div>
+        <div>${selectedPost.author}</div>
     </div>
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps", state)
-    return {pttPost: state.selectedPttPost}
+    return {selectedPost: state.selectedPttPost}
 }
 
 export default connect(mapStateToProps)(PttPostContent)
