@@ -6,10 +6,11 @@ function App() {
   return (
       <div>
           <div>
-              <PttPosts />
-          </div>
-          <div>
               <PttPostContent />
+          </div>
+          ===============================================
+          <div>
+              <PttPosts />
           </div>
       </div>
   );

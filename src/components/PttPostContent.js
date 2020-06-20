@@ -6,8 +6,8 @@ const PttPostContent = ({selectedPost}) => {
         return <div />
     }
     return <div>
-        <div>${selectedPost.title}</div>
-        <div>${selectedPost.author}</div>
+        <div>{selectedPost.title}</div>
+        <div>{selectedPost.body}</div>
     </div>
 }
 

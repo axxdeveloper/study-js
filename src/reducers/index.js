@@ -19,7 +19,17 @@ export const selectedPttPostReducer = (selectedPttPost = null, action) => {
      return selectedPttPost;
 }
 
+export const fetchPostReducer = (fetchPosts = null, action) => {
+    console.log("fetchPostReducer", fetchPosts, action)
+    if (action.type === 'FETCH_POSTS') {
+        console.log("return action", action.payload.data)
+        return action.payload.data;
+    }
+
+    return fetchPosts
+}
+
 export default combineReducers({
-    pttPosts: pttPostsReducer,
-    selectedPttPost: selectedPttPostReducer
+    selectedPttPost: selectedPttPostReducer,
+    fetchPosts: fetchPostReducer
 })

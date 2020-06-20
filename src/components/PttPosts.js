@@ -1,24 +1,35 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux'
-import {selectPttPost} from '../actions'
+import {fetchPosts, selectPttPost} from "../actions";
 
 class PttPosts extends Component {
-    renderPosts() {
-        return this.props.pttPosts.map((post) => {
-           return <div key={post.title}>
-               ${post.title} / ${post.author} <button onClick={() => this.props.selectPttPost(post)} key={post.title}>Click</button>
-           </div>
-        });
+    componentDidMount() {
+        console.log('fetch posts')
+        this.props.fetchPosts()
     }
 
+    renderList() {
+        if (this.props.postList) {
+            console.log("renderList", this.props.postList)
+            return this.props.postList.map((post) => {
+                return <div key={post.id}>
+                    <div key={post.id}><a onClick={() => this.props.selectPttPost(post)}>Title:{post.title}</a></div>
+                </div>
+            });
+        } else {
+            return 'Loading...'
+        }
+    };
+
     render() {
-        return <div>{this.renderPosts()}</div>
+        console.log('render', this.props)
+        return <div>{this.renderList()}</div>
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps", state)
-    return {pttPosts: state.pttPosts};
+    console.log("mapStateToProps",state)
+    return {postList: state.fetchPosts};
 }
 
-export default connect(mapStateToProps, { selectPttPost })(PttPosts)
+export default connect(mapStateToProps, { fetchPosts, selectPttPost })(PttPosts)
