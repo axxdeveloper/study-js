@@ -13,7 +13,7 @@ export const fetchPosts = () => async dispatch => {
     console.log("action fetchPosts")
     const response = await jsonPlaceholder.get('/posts')
 
-    dispatch({type:'FETCH_POSTS', payload: response})
+    dispatch({type:'FETCH_POSTS', payload: response.data})
 }
 
 // origin version

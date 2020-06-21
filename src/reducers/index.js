@@ -22,8 +22,8 @@ export const selectedPttPostReducer = (selectedPttPost = null, action) => {
 export const fetchPostReducer = (fetchPosts = null, action) => {
     console.log("fetchPostReducer", fetchPosts, action)
     if (action.type === 'FETCH_POSTS') {
-        console.log("return action", action.payload.data)
-        return action.payload.data;
+        console.log("return action", action.payload)
+        return action.payload;
     }
 
     return fetchPosts
