@@ -1,19 +1,19 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux'
 import {fetchPosts, selectPttPost} from "../actions";
+import UserHeader from "./UserHeader";
 
 class PttPosts extends Component {
     componentDidMount() {
-        console.log('fetch posts')
         this.props.fetchPosts()
     }
 
     renderList() {
         if (this.props.postList) {
-            console.log("renderList", this.props.postList)
             return this.props.postList.map((post) => {
                 return <div key={post.id}>
                     <div key={post.id}><a onClick={() => this.props.selectPttPost(post)}>Title:{post.title}</a></div>
+                    <UserHeader userId={post.userId} />
                 </div>
             });
         } else {
@@ -22,13 +22,11 @@ class PttPosts extends Component {
     };
 
     render() {
-        console.log('render', this.props)
         return <div>{this.renderList()}</div>
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps",state)
     return {postList: state.fetchPosts};
 }
 

@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
 export const pttPostsReducer = () => {
-    console.log("pttPostsReducer")
     return [
         {title:'Article AAAA', author:"author AAA"},
         {title:'Article BBBB', author:"author BBB"},
@@ -11,7 +10,6 @@ export const pttPostsReducer = () => {
 };
 
 export const selectedPttPostReducer = (selectedPttPost = null, action) => {
-    console.log("selectedPttPostReducer", selectedPttPost, action)
      if (action.type === 'PTT_POST_SELECTED') {
         return action.payload;
      }
@@ -19,10 +17,16 @@ export const selectedPttPostReducer = (selectedPttPost = null, action) => {
      return selectedPttPost;
 }
 
+export const usersReducer = (state = [], action) => {
+    if (action.type === 'FETCH_USER') {
+        return [...state, action.payload]; // add payload to existing state
+    }
+
+    return state;
+}
+
 export const fetchPostReducer = (fetchPosts = null, action) => {
-    console.log("fetchPostReducer", fetchPosts, action)
     if (action.type === 'FETCH_POSTS') {
-        console.log("return action", action.payload)
         return action.payload;
     }
 
@@ -31,5 +35,6 @@ export const fetchPostReducer = (fetchPosts = null, action) => {
 
 export default combineReducers({
     selectedPttPost: selectedPttPostReducer,
-    fetchPosts: fetchPostReducer
+    fetchPosts: fetchPostReducer,
+    users: usersReducer
 })

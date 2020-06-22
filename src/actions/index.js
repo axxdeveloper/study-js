@@ -8,9 +8,14 @@ export const selectPttPost = pttPost => {
     };
 };
 
+export const fetchUser = (userId) => async dispatch => {
+    const response = await jsonPlaceholder.get(`/users/${userId}`)
+
+    dispatch({type:'FETCH_USER', payload: response.data})
+}
+
 // shorten version
 export const fetchPosts = () => async dispatch => {
-    console.log("action fetchPosts")
     const response = await jsonPlaceholder.get('/posts')
 
     dispatch({type:'FETCH_POSTS', payload: response.data})
