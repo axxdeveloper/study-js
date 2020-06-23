@@ -1,4 +1,5 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder'
+import _ from 'lodash'
 
 export const selectPttPost = pttPost => {
     console.log("selectPttPost", pttPost)
@@ -8,11 +9,15 @@ export const selectPttPost = pttPost => {
     };
 };
 
-export const fetchUser = (userId) => async dispatch => {
+// assign fetchUser to memoize, so that function instance is the same
+export const fetchUser = (userId) => dispatch => _fetchUser(userId, dispatch);
+
+// define a function to adapt memoize
+const _fetchUser = _.memoize(async (userId, dispatch) => {
     const response = await jsonPlaceholder.get(`/users/${userId}`)
 
     dispatch({type:'FETCH_USER', payload: response.data})
-}
+})
 
 // shorten version
 export const fetchPosts = () => async dispatch => {
