@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux'
-import {fetchPosts, selectPttPost} from "../actions";
+import {fetchPostsAndUsers, selectPttPost} from "../actions";
 import UserHeader from "./UserHeader";
 
 class PttPosts extends Component {
     componentDidMount() {
-        this.props.fetchPosts()
+        this.props.fetchPostsAndUsers()
     }
 
     renderList() {
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
     return {postList: state.fetchPosts};
 }
 
-export default connect(mapStateToProps, { fetchPosts, selectPttPost })(PttPosts)
+export default connect(mapStateToProps, { fetchPostsAndUsers, selectPttPost })(PttPosts)

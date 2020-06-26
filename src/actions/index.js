@@ -9,15 +9,17 @@ export const selectPttPost = pttPost => {
     };
 };
 
-// assign fetchUser to memoize, so that function instance is the same
-export const fetchUser = (userId) => dispatch => _fetchUser(userId, dispatch);
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+    await dispatch (fetchPosts());
+    const userIds = _.uniq(_.map(getState().fetchPosts, 'userId'))
+    userIds.forEach(id => dispatch(fetchUser(id)))
+}
 
-// define a function to adapt memoize
-const _fetchUser = _.memoize(async (userId, dispatch) => {
+export const fetchUser = (userId) => async dispatch => {
     const response = await jsonPlaceholder.get(`/users/${userId}`)
 
     dispatch({type:'FETCH_USER', payload: response.data})
-})
+}
 
 // shorten version
 export const fetchPosts = () => async dispatch => {
