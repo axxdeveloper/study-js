@@ -33,5 +33,13 @@ todos.markDone("id2");
 console.log(todos.getItemById("id2"));
 
 const testMap = new TestMap();
-testMap.put("ka", "va");
-console.log(testMap.get("ka")); // print va
+testMap.put("ka", "vka");
+testMap.put("kb", "vka");
+testMap.put("kc", "vka");
+testMap.put("kd", "vka");
+testMap.put("ke", "vka");
+testMap.put("aa", "vaa");
+console.log(testMap);
+console.log(testMap.count()); // 6
+testMap.clearByKeyPrefix("k"); // print 6 entries
+console.log(testMap.get("aa")); // print vaa
