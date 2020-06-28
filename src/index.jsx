@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import {Helloworld} from './ts/Helloworld'
 import {TodoItemCollection} from "./ts/TodoItemCollection";
 import {TodoItem} from "./ts/TodoItem";
+import {TestMap} from "./ts/TestMap";
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
@@ -30,3 +31,7 @@ todos.addItem(new TodoItem("id4", "task4", false));
 console.log(todos);
 todos.markDone("id2");
 console.log(todos.getItemById("id2"));
+
+const testMap = new TestMap();
+testMap.put("ka", "va");
+console.log(testMap.get("ka")); // print va
